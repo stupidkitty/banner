@@ -1,0 +1,2 @@
+# banners
+Yii banners module
