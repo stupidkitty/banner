@@ -156,7 +156,7 @@ class MainController extends Controller
         $banner = $this->findById($id);
 
         if ($banner->delete()) {
-            Yii::$app->session->addFlash('success', Yii::t('banner', 'banner_deleted', ['name' => $baner->name]));
+            Yii::$app->session->addFlash('success', Yii::t('banner', 'banner_deleted', ['name' => $banner->name]));
         }
 
         return $this->redirect(['index']);
