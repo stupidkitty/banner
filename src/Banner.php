@@ -15,22 +15,28 @@ class Banner
     public static function show($name)
     {
         $banners = BannerModel::find()
+            ->select(['id', 'name', 'code', 'mobile', 'desktop'])
             ->where(['name' => $name, 'enabled' => 1])
             ->all();
+        
+        if (empty($banners)) {
+            return '';
+        }
 
         $deviceDetect = Yii::$container->get('device.detect');
         $isMobile = $deviceDetect->isMobile() || $deviceDetect->isTablet();
+        $isDesktop = !$isMobile;
 
-        $text = '';
+        $code = '';
         foreach ($banners as $banner) {
             $showMobile = ($isMobile && $banner->mobile) ? true : false;
-            $showDesktop = (!$isMobile && $banner->desktop) ? true : false;
+            $showDesktop = ($isDesktop && $banner->desktop) ? true : false;
 
             if ($showMobile || $showDesktop) {
-                $text .= $banner->code;
+                $code .= $banner->code;
             }
         }
 
-        return $text;
+        return $code;
     }
 }
