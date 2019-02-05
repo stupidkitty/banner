@@ -1,5 +1,5 @@
 <?php
-namespace SK\Banner\Model;
+namespace SK\BannerModule\Model;
 
 trait ToggleableTrait
 {

@@ -1,12 +1,12 @@
 <?php
-namespace SK\Banner\Api;
+namespace SK\BannerModule\Api;
 
 use Yii;
 use yii\filters\Cors;
 use yii\rest\Controller;
-use SK\Banner\Model\Banner;
+use SK\BannerModule\Model\Banner;
 use yii\filters\VerbFilter;
-use SK\Banner\Form\BannerForm;
+use SK\BannerModule\Form\BannerForm;
 use yii\web\NotFoundHttpException;
 use yii\filters\auth\HttpBearerAuth;
 

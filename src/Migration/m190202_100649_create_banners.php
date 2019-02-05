@@ -44,19 +44,4 @@ class m190202_100649_create_banners extends Migration
 
         return false;
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m190202_100649_create_banners cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

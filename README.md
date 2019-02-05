@@ -5,7 +5,7 @@ Yii2 banners module
 ```
 'modules' => [
     'banner' => [
-        'class' => SK\Banner\Module::class,
+        'class' => SK\BannerModule\Module::class,
     ],
 ],
 ```
@@ -39,7 +39,7 @@ or composer:
 In template:
 ```
 <?php
-use SK\Banner\Banner;
+use SK\BannerModule\Banner;
 
 //...
 // single

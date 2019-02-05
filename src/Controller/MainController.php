@@ -1,5 +1,5 @@
 <?php
-namespace SK\Banner\Controller;
+namespace SK\BannerModule\Controller;
 
 use Yii;
 use yii\web\Controller;
@@ -7,8 +7,8 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
-use SK\Banner\Model\Banner;
-use SK\Banner\Form\BannerForm;
+use SK\BannerModule\Model\Banner;
+use SK\BannerModule\Form\BannerForm;
 
 /**
  * MainController implements the CRUD actions for Banner model.

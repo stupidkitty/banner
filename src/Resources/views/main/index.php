@@ -106,7 +106,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <p>
             При вставке в шаблоне указать сверху страницы:
-            <code>use SK\Banner\Banner;</code>
+            <code>use SK\BannerModule\Banner;</code>
         </p>
 
         <p>

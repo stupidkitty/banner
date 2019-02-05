@@ -1,5 +1,5 @@
 <?php
-namespace SK\Banner\Form;
+namespace SK\BannerModule\Form;
 
 use yii\base\Model;
 use yii\helpers\StringHelper;

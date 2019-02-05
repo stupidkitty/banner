@@ -1,5 +1,5 @@
 <?php
-namespace SK\Banner;
+namespace SK\BannerModule;
 
 use Yii;
 use yii\base\Module as BaseModule;
@@ -15,7 +15,7 @@ class Module extends BaseModule
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'SK\Banner\Controller';
+    public $controllerNamespace = 'SK\BannerModule\Controller';
 
     /**
      * @inheritdoc
@@ -43,7 +43,7 @@ class Module extends BaseModule
 
         // Контроллеры для консольных команд
         if (Yii::$app instanceof ConsoleApplication) {
-            $this->controllerNamespace = 'SK\Banner\Command';
+            $this->controllerNamespace = 'SK\BannerModule\Command';
         }
 
         // Переводы с языков.

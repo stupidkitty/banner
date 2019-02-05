@@ -1,8 +1,8 @@
 <?php
-namespace SK\Banner;
+namespace SK\BannerModule;
 
 use Yii;
-use SK\Banner\Model\Banner as BannerModel;
+use SK\BannerModule\Model\Banner as BannerModel;
 
 class Banner
 {
