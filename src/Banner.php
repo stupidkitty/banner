@@ -15,7 +15,7 @@ class Banner
     public static function show($name)
     {
         $banners = BannerModel::find()
-            ->select(['id', 'name', 'code', 'mobile', 'desktop'])
+            ->select(['banner_id', 'name', 'code', 'mobile', 'desktop'])
             ->where(['name' => $name, 'enabled' => 1])
             ->all();
         
