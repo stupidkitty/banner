@@ -34,9 +34,9 @@ class MainController extends Controller
             'corsFilter' => [
                 'class' => Cors::class,
             ],
-            /*'authenticator' => [
+            'authenticator' => [
                 'class' => HttpBearerAuth::class,
-            ],*/
+            ],
         ];
     }
 
