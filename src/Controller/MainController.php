@@ -2,12 +2,13 @@
 namespace SK\BannerModule\Controller;
 
 use Yii;
+use yii\web\Request;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
-use yii\web\NotFoundHttpException;
 use SK\BannerModule\Model\Banner;
+use yii\web\NotFoundHttpException;
 use SK\BannerModule\Form\BannerForm;
 
 /**
@@ -83,12 +84,13 @@ class MainController extends Controller
      */
     public function actionCreate()
     {
+        $request = Yii::$container->get(Request::class);
         $banner = new Banner;
 
         $form = new BannerForm();
         $form->setAttributes($banner->getAttributes());
 
-        if ($form->load(Yii::$app->request->post()) && $form->isValid()) {
+        if ($form->load($request->post()) && $form->isValid()) {
             $currentDatetime = gmdate('Y-m-d H:i:s');
 
             $banner->setAttributes($form->getAttributes());
@@ -119,11 +121,12 @@ class MainController extends Controller
     public function actionUpdate($id)
     {
         $banner = $this->findById($id);
+        $request = Yii::$container->get(Request::class);
 
         $form = new BannerForm();
         $form->setAttributes($banner->getAttributes());
 
-        if ($form->load(Yii::$app->request->post()) && $form->isValid()) {
+        if ($form->load($request->post()) && $form->isValid()) {
             $currentDatetime = gmdate('Y-m-d H:i:s');
 
             $banner->setAttributes($form->getAttributes());
