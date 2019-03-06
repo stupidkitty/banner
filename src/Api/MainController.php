@@ -127,11 +127,12 @@ class MainController extends Controller
     public function actionUpdate($id)
     {
         $banner = $this->findById($id);
+        $request = Yii::$container->get(Request::class);
 
         $form = new BannerForm();
         $form->setAttributes($banner->getAttributes());
 
-        if ($form->load(Yii::$app->getRequest()->getBodyParams()) && $form->isValid()) {
+        if ($form->load($request->getBodyParams()) && $form->isValid()) {
             $currentDatetime = gmdate('Y-m-d H:i:s');
 
             $banner->setAttributes($form->getAttributes());
