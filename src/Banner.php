@@ -2,29 +2,47 @@
 namespace SK\BannerModule;
 
 use Yii;
+use yii\web\View;
+use yii\di\Instance;
 use SK\BannerModule\Model\Banner as BannerModel;
 
 class Banner
 {
+    private $view;
+    private $deviceDetect;
+    public $templatesPath;
+
     /**
-     * Показ одного или несколько баннеров
+     * Banner constructor
      *
-     * @param string|array $name Название плейсхолдера баннера.
-     * @return string
+     * @param View $view
+     * @return void
      */
-    public static function show($name)
+    public function __construct(View $view)
+    {
+        $this->view = $view;
+        $this->deviceDetect = Instance::ensure('device.detect');
+    }
+
+    /**
+     * Show banners
+     *
+     * @param string|array $name
+     * @param array $options
+     * @return void
+     */
+    protected function show($name, array $options = [])
     {
         $banners = BannerModel::find()
             ->select(['banner_id', 'name', 'code', 'mobile', 'desktop'])
             ->where(['name' => $name, 'enabled' => 1])
             ->all();
-        
+
         if (empty($banners)) {
             return '';
         }
 
-        $deviceDetect = Yii::$container->get('device.detect');
-        $isMobile = $deviceDetect->isMobile() || $deviceDetect->isTablet();
+        $isMobile = $this->isMobile();
         $isDesktop = !$isMobile;
 
         $code = '';
@@ -37,6 +55,40 @@ class Banner
             }
         }
 
+        if (isset($options['template'])) {
+            if ($this->templatesPath) {
+                $template = "{$this->templatesPath}/{$options['template']}";
+            } else {
+                $template = $options['template'];
+            }
+
+            return $this->view->render($template, ['code' => $code]);
+        }
+
         return $code;
+    }
+
+    /**
+     * Check user device.
+     *
+     * @return boolean
+     */
+    private function isMobile(): bool
+    {
+        return $this->deviceDetect->isMobile() || $this->deviceDetect->isTablet();
+    }
+
+    /**
+     * Static facade
+     *
+     * @param string $method
+     * @param array $args
+     * @return mixed
+     */
+    public function __callStatic($method, $args)
+    {
+        $instance = Yii::$container->get(__CLASS__);
+
+        return $instance->$method(...$args);
     }
 }
