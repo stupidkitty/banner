@@ -8,6 +8,14 @@ Yii2 banners module
         'class' => SK\BannerModule\Module::class,
     ],
 ],
+'container' => [
+    'singletons' => [
+        'SK\BannerModule\Banner' => [
+            'class' => \SK\BannerModule\Banner::class,
+            'templatesPath' => '@app/views/banners' // path for ad spots templates
+        ]
+    ]
+]
 ```
 
 ## Migrations
@@ -47,4 +55,7 @@ use SK\BannerModule\Banner;
 
 // or multiple
 <?= Banner::show(['banner.first', 'banner.second']) ?>
+
+// Spot template. Template should exists.
+<?= Banner::show(['banner.first', 'banner.second'], ['template' => 'default']) ?>
 ```
