@@ -85,7 +85,7 @@ class Banner
      * @param array $args
      * @return mixed
      */
-    public function __callStatic($method, $args)
+    public static function __callStatic($method, $args)
     {
         $instance = Yii::$container->get(__CLASS__);
 
