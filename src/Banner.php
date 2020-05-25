@@ -55,7 +55,7 @@ class Banner
             }
         }
 
-        if (isset($options['template'])) {
+        if (isset($options['template']) &&  $code !== '') {
             if ($this->templatesPath) {
                 $template = "{$this->templatesPath}/{$options['template']}";
             } else {
