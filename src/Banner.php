@@ -31,7 +31,7 @@ class Banner
      * @param array $options
      * @return void
      */
-    protected function show($name, array $options = [])
+    protected function show($name = '', array $options = [])
     {
         $banners = BannerModel::find()
             ->select(['banner_id', 'name', 'code', 'mobile', 'desktop'])
